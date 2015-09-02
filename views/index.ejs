@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Cat Kingdom</title>
+        <link href='style.css' type="text/css" rel="stylesheet" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/blitzer/jquery-ui.css" type="text/css" />
+        <script src="http://static.projectshadowlight.org/jquery-easy-confirm-dialog/jquery.easy-confirm-dialog.min.js"></script>
+        <script>
+            $(document).ready(function (){
+                $(".confirm").easyconfirm();
+            })
+        </script>
+    </head>
+    <body>
+         <div class="container">
+             <table>
+                <tr>
+                    <td><h1>Cat Kingdom</h1></td>
+                    <td>
+                        <a href='/new' class='button new'>Add New</a>
+                    </td>
+                </tr>
+            </table>
+             <% for (var i in cats) { %>
+                <div class='small-container'>
+                    <div class='small-content'>
+                        <a href='/<%= cats[i]._id %>/view' title='View <%= cats[i].name %>'><img src='<%= cats[i].photo %>' width='100%' class='thumb' /></a></br></br> 
+                        Subfamily: <span class='show'><%= cats[i].subfamily %></span></br> 
+                        Genus: <span class='show'><%= cats[i].genus %></span></br> 
+                        Scientific: <span class='show'><%= cats[i].scientific_name %></span></br> 
+                        Name: <span class='show'><%= cats[i].name %></span>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td class="action"><a href='/<%= cats[i]._id %>/view' title='View <%= cats[i].name %>' class='button-sm'>View</a></td>
+                            <td class="action"><a href='/<%= cats[i]._id %>/edit' title='Edit <%= cats[i].name %>' class='button-sm edit'>Edit</a></td>
+                            <td class="action">
+                                <a href='/<%= cats[i]._id %>/delete' title='Are you sure you want to delete <%= cats[i].name %>?' class='confirm button-sm delete' id='delete'>Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+             <% } %>
+            <div class='text-center small-text'>Wei Chung Chuo. 2015 @ Coding Dojo</div>
+        </div>
+    </body>
+</html>
